@@ -23,10 +23,37 @@ function Users() {
 
     return (
         <>
-            <div className='my-5' >
+            <div className='' >
                 <h3 className='text-center'>Users</h3>
 
-                <Row>
+                <table className="container my-5 text-center bg-dark text-light" style={{width:'550px'}}>
+                    <thead>
+                        <tr >
+                            <th className='p-3'>#</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            users?.length > 0 ?
+                                users?.map((user, index) => (
+                                    <tr key={index}>
+                                        <td className='p-3'>{index + 1}</td>
+                                        <td>{user?.username}</td>
+                                        <td>{user?.email}</td>
+                                    </tr>
+                                ))
+                                :
+                                <tr>
+                                    <td className="text-danger">No Users registered yet!!!</td>
+                                </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+                {/* <Row>
                     {
                         users.length > 0 ?
                             users.map(item => (
@@ -39,7 +66,7 @@ function Users() {
                             )) :
                             <h5>No Users!</h5>
                     }
-                </Row>
+                </Row> */}
 
             </div>
         </>

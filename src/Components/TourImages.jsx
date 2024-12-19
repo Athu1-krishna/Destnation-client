@@ -27,7 +27,7 @@ function TourImages({ photo, tour }) {
             <div className='py-2' style={{ cursor: 'pointer' }} >
                 <img src={photo && `${base_url}/${photo}`} width={'100%'} alt="tour-img" height={'300px'} className='rounded-1 gallery' onClick={() => handlePhotoClick()} />
             </div>
-            <div>
+            {/* <div>
                 <Modal
                     show={showModal}
                     onHide={closeModal}
@@ -49,7 +49,7 @@ function TourImages({ photo, tour }) {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-            </div>
+            </div> */}
         </>
     )
 }

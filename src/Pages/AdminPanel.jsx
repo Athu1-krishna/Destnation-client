@@ -117,7 +117,6 @@ function AdminPanel() {
                         <h3>Welcome, <span className='text-danger fw-bolder'>Admin</span></h3>
                     </div>
                     <div className=' d-flex justify-content-center'>
-                        {/* <img src="http://www.uluru.com/design/package_tour.png" style={{ height: "100px" }} alt="" /> */}
                         <button className='btn p-3 bg-success text-white fw-bolder' style={{ marginTop: "25px" , border:"none", outline:"none"}} onClick={handleShow}>ADD NEW PACKAGE<i className="fa-solid fa-plus fw-bolder ms-3 "></i></button>
                     </div>
 
@@ -171,29 +170,38 @@ function AdminPanel() {
                     </Modal>
 
                     <div className='mt-5' id='trips'>
-                        <h2 className='text-center text-info fw-bolder mb-5'> PACKAGES</h2>
-                        <div className='p-3 d-flex mb-5'>
+                        <h2 className='text-center '> PACKAGES</h2>
+                        <div className='d-flex'>
+                            <table className="container my-5 bg-dark text-light text-center" style={{width:'60vw'}}>
+                                <thead>
+                                    <tr>
+                                        <th className='p-3'>#</th>
+                                        <th>Package Name</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        tours?.length > 0 ?
+                                            tours?.map((item, index) => (
+                                                <tr key={item?._id}>
+                                                    <td className='p-3'>{index + 1}</td>
+                                                    <td>{item?.packageName}</td>
+                                                    <td><AdminEdit tours={item} /></td>
+                                                    <td> <button className='btn mt-3 bg-danger text-light' onClick={() => { handleDeleteTour(item?._id) }} >
+                                                      DELETE
+                                                    </button></td>
 
-                            <Row>
-                                {
-                                    tours.length > 0 &&
-                                    tours.map(item => (
-                                        <Col md='6'>
-                                            <div style={{ backgroundColor:"#bed1d6"}} className='d-flex justify-content-between text-dark border mb-3 p-3 w-100'>
-                                                <h4 className='ms-5 mt-2'>{item?.packageName}</h4>
-                                                <div>
-
-                                                    <AdminEdit tours={item} />
-                                                    <button className='btn mt-3 bg-danger text-light' onClick={() => { handleDeleteTour(item?._id) }} >
-                                                        {/* <i className="fa-solid fa-trash fa-2xl text-danger" /> */}DELETE
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </Col>
-                                    ))
-
-                                }
-                            </Row>
+                                                </tr>
+                                            ))
+                                            :
+                                            <tr>
+                                                <td className="text-danger">Not watched any videos yet!</td>
+                                            </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <hr />

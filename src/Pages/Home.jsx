@@ -197,7 +197,7 @@ function Home() {
                             <p>Obsessed with the idea of empowering the travelers with best vacation deals.To provide the best tour and travel experiences, our packages are customizable at the time of booking.At DestiNation, we know that a holiday, ideally, should not be all about planning, finding and making bookings.  </p>
                         </div>
                     </Col>
-                    <Col lg='6' className='p-5' style={{ height: '70vh' }}>
+                    <Col lg='6' className='p-5 ' style={{ height: '70vh' }}>
                         <img className='img-fluid' style={{ objectFit: 'contain', width: '100%', height: '100%' }} src="https://i.pinimg.com/736x/bd/d6/bb/bdd6bb1faea91e47d21d83ce59c0d438.jpg" alt="" />
                     </Col>
                 </Row>

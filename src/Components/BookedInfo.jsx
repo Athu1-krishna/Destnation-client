@@ -25,7 +25,7 @@ function BookedInfo() {
     const handleDelete = async (id) => {
         const result = await cancelBooking(id)
         if (result.status == 200) {
-            toast.error("Trip Cancelled!!")
+            toast.error("Trip Deleted!!")
             allClients()
         }
         else {
@@ -37,37 +37,50 @@ function BookedInfo() {
         <>
             <div className='my-5 '>
                 <h3 className='text-center'>PACKAGES BOOKED</h3>
-
-                <Row className='d-flex justify-content-evenly'>
-
-                    {
-                        clients.length > 0 ?
-                            clients.map(item => (
-                                <Col md='5' className='d-flex justify-content-center'>
-                                    <div className='w-100 mt-5 p-5 text-white' style={{ backgroundColor:"#3cbe9e"}}>
-                                        <h4>Package Name : <span className='text-danger fw-bolder' > {item.packageName}</span></h4>
-                                        <h5>Name : {item.fullName}</h5>
-                                        <h6>Email  :{item.email}</h6>
-                                        <h6>Phone : {item.phone}</h6>
-                                        <h6>Date : {new Date(item.bookAt).toLocaleDateString('en-IN', {
+                <table className="container my-5 table table-striped " style={{width:'60vw'}}>
+                    <thead>
+                        <tr>
+                            <th className='p-2'>#</th>
+                            <th>Package Name</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Date</th>
+                            <th>No. of People</th>
+                            <th>Total Amount</th>
+                            <th>...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            clients?.length > 0 ?
+                                clients?.map((item, index) => (
+                                    <tr key={index}>
+                                        <td className='p-2'>{index + 1}</td>
+                                        <td>{item?.packageName}</td>
+                                        <td>{item?.fullName}</td>
+                                        <td>{item?.email}</td>
+                                        <td>{item?.phone}</td>
+                                        <td>{new Date(item.bookAt).toLocaleDateString('en-IN', {
                                             month: 'long',
                                             day: 'numeric',
                                             year: 'numeric'
-                                        })}</h6>
-                                        <h6>No. of people : {item.guestSize}</h6>
-                                        <div className='d-flex justify-content-between'>
-                                            <h5><b>Total Amount :</b><span className='text-dark'> &#x20B9;{item.totalAmount}</span></h5>
-                                            <button className='btn pt-2' onClick={() => { handleDelete(item?._id) }}>
-                                                <i className="fa-solid fa-trash-can fa-xl text-danger"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </Col>
-                            )) :
-                            <h5>No Bookings!</h5>
-                    }
-                </Row>
-
+                                        })}</td>
+                                        <td>{item?.guestSize}</td>
+                                        <td> &#x20B9;{item.totalAmount}</td>
+                                        <td> <button className='btn pt-2' onClick={() => { handleDelete(item?._id) }}>
+                                            <i className="fa-solid fa-trash-can fa-xl text-danger"></i>
+                                        </button></td>
+                                    </tr>
+                                ))
+                                :
+                                <tr>
+                                    <td className="text-danger">No Bookings yet!</td>
+                                </tr>
+                        }
+                    </tbody>
+                </table>
+               
             </div>
         </>
     )
