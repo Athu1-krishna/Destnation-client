@@ -197,7 +197,7 @@ function AdminPanel() {
                                             ))
                                             :
                                             <tr>
-                                                <td className="text-danger">Not watched any videos yet!</td>
+                                                <td className="text-danger">Not Package added yet!</td>
                                             </tr>
                                     }
                                 </tbody>

@@ -52,22 +52,6 @@ function Users() {
                     </tbody>
                 </table>
 
-
-                {/* <Row>
-                    {
-                        users.length > 0 ?
-                            users.map(item => (
-                                <Col md='4' className='d-flex justify-content-center'>
-                                    <div style={{ backgroundColor:'#dc4a5a'}} className='w-100 text-light mt-5 p-5 text-center'>
-                                        <h4>User Name : {item.username}</h4>
-                                        <h4>Email : {item.email}</h4>
-                                    </div>
-                                </Col>
-                            )) :
-                            <h5>No Users!</h5>
-                    }
-                </Row> */}
-
             </div>
         </>
     )
